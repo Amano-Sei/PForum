@@ -92,5 +92,6 @@ create table posting(
 
 create table blacklist(
 	blid 	int primary key auto_increment,
-	blip 	varchar(64)
+	blip 	varchar(64),
+	key (blip)
 )engine=innodb,charset=utf8mb4;

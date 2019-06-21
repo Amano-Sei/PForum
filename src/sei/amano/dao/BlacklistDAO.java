@@ -5,18 +5,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
+import sei.amano.bean.BlackList;
 import sei.amano.util.DBUtil;
 
 public class BlacklistDAO {
-	public static int add(String ip) throws SQLException {
-		String sql = "insert into blacklist set blip = ?";
+	public static int add(BlackList blacklist) throws SQLException {
+		String sql = "insert into blacklist values(null, ?, ?)";
 		try(
 			Connection conn = DBUtil.getConnection();
 			PreparedStatement pst = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 		){
-			pst.setString(1, ip);
+			pst.setString(1, blacklist.getBlip());
+			pst.setTimestamp(2, new Timestamp(blacklist.getBldate().getTime()));
 			pst.execute();
 			try(ResultSet rs = pst.getGeneratedKeys()){
 				if(rs.next())
@@ -36,9 +40,9 @@ public class BlacklistDAO {
 		}
 	}
 	
-	public static ArrayList<String> list(int start, int len) throws SQLException{
-		ArrayList<String> ips = new ArrayList<>();
-		String sql = "select blip from blacklist limit ?, ?";
+	public static ArrayList<BlackList> list(int start, int len) throws SQLException{
+		ArrayList<BlackList> ips = new ArrayList<>();
+		String sql = "select blid, blip, bldate from blacklist limit ?, ?";
 		try(
 			Connection conn = DBUtil.getConnection();
 			PreparedStatement pst = conn.prepareStatement(sql);
@@ -46,13 +50,14 @@ public class BlacklistDAO {
 			pst.setInt(1, start);
 			pst.setInt(2, len);
 			try(ResultSet rs = pst.executeQuery()){
-				while(rs.next())
-					ips.add(rs.getString(1));
+				while(rs.next()) {
+					ips.add(new BlackList(rs.getInt(1), rs.getString(2), new Date(rs.getTimestamp(3).getTime())));
+				}
 			}
 		}
 		return ips;
 	}
-	public static ArrayList<String> list() throws SQLException{
+	public static ArrayList<BlackList> list() throws SQLException{
 		return list(0, Short.MAX_VALUE);
 	}
 	public static boolean checkip(String ip) throws SQLException {
