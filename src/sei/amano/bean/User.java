@@ -5,6 +5,7 @@ import java.util.Date;
 public class User {
 	private int uid;
 	private String uname;
+	private String unickname;
 	private String upassword;
 	private int ulv;
 	private String ulvname;
@@ -25,12 +26,13 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(int uid, String uname, String upassword, int ulv, String ulvname, Date uregtime, Date ulastlogintime,
+	public User(int uid, String uname, String unickname, String upassword, int ulv, String ulvname, Date uregtime, Date ulastlogintime,
 			String ulastloginip, Date ubirth, int uage, boolean usex, String uprovince, String ucity, String uarea,
 			String usignature, String uhobby, String umail, int upagecount) {
 		super();
 		this.uid = uid;
 		this.uname = uname;
+		this.unickname = unickname;
 		this.upassword = upassword;
 		this.ulv = ulv;
 		this.ulvname = ulvname;
@@ -56,6 +58,12 @@ public class User {
 	}
 	public String getUname() {
 		return uname;
+	}
+	public String getUnickname() {
+		return unickname;
+	}
+	public void setUnickname(String unickname) {
+		this.unickname = unickname;
 	}
 	public void setUname(String uname) {
 		this.uname = uname;

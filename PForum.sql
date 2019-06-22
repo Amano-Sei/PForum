@@ -9,7 +9,8 @@ create table ulvname(
 
 create table user(
 	uid		 	  	int primary key auto_increment,
-	uname	 		varchar(64) not null unique,
+	uname	 		char(16) not null unique,
+	unickname 		char(16) not null unique,
 	upassword 		char(32) not null,
 	ulv			 	tinyint,
 	uregtime 		timestamp,
@@ -93,5 +94,6 @@ create table posting(
 create table blacklist(
 	blid 	int primary key auto_increment,
 	blip 	varchar(64),
+	bldate 	timestamp,
 	key (blip)
 )engine=innodb,charset=utf8mb4;

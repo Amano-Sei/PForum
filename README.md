@@ -45,8 +45,8 @@ jojo我不复习了！<br>
 |  34 | 后端     | filter  | sei.amano.user.filter     | StatusFilter.java              |    0 |
 |  35 | 后端     | servlet | sei.amano.user.servlet    | ChangePasswordServlet.java     |    0 |
 |  36 | 后端     | servlet | sei.amano.user.servlet    | EditServlet.java               |    0 |
-|  37 | 后端     | servlet | sei.amano.user.servlet    | LoginServlet.java              |    0 |
-|  38 | 后端     | servlet | sei.amano.user.servlet    | LogoutServlet.java             |    0 |
+|  37 | 后端     | servlet | sei.amano.user.servlet    | LoginServlet.java              |    1 |
+|  38 | 后端     | servlet | sei.amano.user.servlet    | LogoutServlet.java             |    1 |
 |  39 | 后端     | servlet | sei.amano.user.servlet    | RegisterServlet.java           |    0 |
 |  40 | 后端     | util    | sei.amano.util            | DateUtil.java                  |    1 |
 |  41 | 后端     | util    | sei.amano.util            | DBUtil.java                    |    1 |
@@ -70,7 +70,7 @@ jojo我不复习了！<br>
 |  59 | 前端     | include | /web/include/content      | header.jsp                     |    0 |
 |  60 | 前端     | include | /web/include/content      | nav.jsp                        |    0 |
 |  61 | 前端     | include | /web/include/content      | pag.jsp                        |    0 |
-|  62 | 前端     | jsp     | /web/user                 | login.jsp                      |    0 |
+|  62 | 前端     | jsp     | /web/user                 | login.jsp                      |    1 |
 |  63 | 前端     | jsp     | /web/user                 | register.jsp                   |    0 |
 |  64 | 前端     | jsp     | /web/user/manage          | chainlist.jsp                  |    0 |
 |  65 | 前端     | jsp     | /web/user/manage          | modify.jsp                     |    0 |
@@ -83,3 +83,5 @@ jojo我不复习了！<br>
 |  72 | 后端     | include | /web/include              | splib.jsp                      |    1 |
 +-----+----------+---------+---------------------------+--------------------------------+------+
 </pre>
+last update 2019-06-22 凌晨<br>
+当前在完成的文件 register.js(被纳入register.jsp不再重新统计)<br>

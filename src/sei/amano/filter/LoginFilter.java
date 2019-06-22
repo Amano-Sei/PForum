@@ -1,6 +1,8 @@
 package sei.amano.filter;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -25,13 +27,10 @@ public class LoginFilter implements Filter {
 		String preuri = request.getRequestURI(); 
 		String uri = preuri.substring(request.getServletContext().getContextPath().length());
 		if(user == null && (uri.startsWith("/content") || uri.startsWith("/admin") || uri.startsWith("/user/manage"))) {
-			request.setAttribute("errlogin", "请先登录");
-			request.setAttribute("preuri", preuri);
-			request.getRequestDispatcher("/user/login.jsp").forward(arg0, arg1);
+			response.sendRedirect("/user/login.jsp?errlogin="+URLEncoder.encode("请先登录", StandardCharsets.UTF_8)+"&preuri="+preuri);
 			return;
 		}else if(user != null && (uri.startsWith("/user/login.jsp") || uri.startsWith("/user/register.jsp"))) {
-			request.setAttribute("errhome", "您已登录");
-			request.getRequestDispatcher("/home.jsp").forward(request, response);
+			response.sendRedirect("/home.jsp?errhome="+URLEncoder.encode("您已登录", StandardCharsets.UTF_8));
 			return;
 		}
 			

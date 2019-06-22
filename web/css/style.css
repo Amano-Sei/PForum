@@ -1,6 +1,8 @@
-.errorpage{
-	background-color: #f3f3f3;
-	background-image: url("/PForum/img/page/error.png");
-	background-repeat: no-repeat;
-	width: 100%;
+html{
+	font-size: 16px;
+}
+body{
+	background-color: #f5f5f5;
+	padding-top: 2.5rem;
+	padding-bottom: 2.5rem;
 }

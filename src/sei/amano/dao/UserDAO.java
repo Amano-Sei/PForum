@@ -15,29 +15,31 @@ import sei.amano.util.DBUtil;
 
 public class UserDAO {
 	public static void add(User user) throws SQLException {
-		String sql = "insert into user (uname, upassword, ulv, uregtime, ulastlogintime, ulastloginip, ubirth, uage, usex, uprovince, ucity, uarea, usignature, uhobby, umail, upagecount) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into user (uname, unickname, upassword, ulv, uregtime, ulastlogintime, ulastloginip, ubirth, uage, usex, uprovince, ucity, uarea, usignature, uhobby, umail, upagecount) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try(
 			Connection conn = DBUtil.getConnection();
 			PreparedStatement pst = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 		){
 			pst.setString(1, user.getUname());										//uname
-			pst.setString(2, user.getUpassword());									//upassword
-			pst.setInt(3, user.getUlv());											//ulv
-			pst.setTimestamp(4, new Timestamp(user.getUregtime().getTime()));		//uregtime
-			pst.setTimestamp(5, new Timestamp(user.getUlastlogintime().getTime()));	//ulastlogintime
-			pst.setString(6, user.getUlastloginip());								//ulastloginip
-			pst.setTimestamp(7, new Timestamp(user.getUbirth().getTime()));			//ubirth
-			pst.setInt(8, user.getUage());											//uage
-			pst.setBoolean(9, user.isUsex());										//usex
-			pst.setString(10, user.getUprovince());									//uprovince
-			pst.setString(11, user.getUcity());										//ucity
-			pst.setString(12, user.getUarea());										//uarea
-			pst.setString(13, user.getUsignature());								//usignature
-			pst.setString(14, user.getUhobby());									//uhobby
-			pst.setString(15, user.getUmail());										//umail
-			pst.setInt(16, user.getUpagecount());									//upagecount
+			pst.setString(2, user.getUnickname());									//unickname
+			pst.setString(3, user.getUpassword());									//upassword
+			pst.setInt(4, user.getUlv());											//ulv
+			pst.setTimestamp(5, new Timestamp(user.getUregtime().getTime()));		//uregtime
+			pst.setTimestamp(6, new Timestamp(user.getUlastlogintime().getTime()));	//ulastlogintime
+			pst.setString(7, user.getUlastloginip());								//ulastloginip
+			pst.setTimestamp(8, new Timestamp(user.getUbirth().getTime()));			//ubirth
+			pst.setInt(9, user.getUage());											//uage
+			pst.setBoolean(10, user.isUsex());										//usex
+			pst.setString(11, user.getUprovince());									//uprovince
+			pst.setString(12, user.getUcity());										//ucity
+			pst.setString(13, user.getUarea());										//uarea
+			pst.setString(14, user.getUsignature());								//usignature
+			pst.setString(15, user.getUhobby());									//uhobby
+			pst.setString(16, user.getUmail());										//umail
+			pst.setInt(17, user.getUpagecount());									//upagecount
 			//建表的时候就预见到了此刻的痛苦...
 			//但是莫得办法，感觉就是这样user的字段还是缺点啥的样子...
+			//然后发觉忘记加昵称了...痛苦修改中（
 			pst.execute();
 			try(ResultSet rs = pst.getGeneratedKeys()){
 				if(rs.next())
@@ -57,35 +59,36 @@ public class UserDAO {
 	}
 	
 	public static void edit(int uid, User user) throws SQLException {
-		String sql = "update user set uname = ?, upassword = ?, ulv = ?, uregtime = ?, ulastlogintime = ?, ulastloginip = ?, ubirth = ?, uage = ?, usex = ?, uprovince = ?, ucity = ?, uarea = ?, usignature = ?, uhobby = ?, umail = ?, upagecount = ? where uid = ?";
+		String sql = "update user set uname = ?, unickname = ?, upassword = ?, ulv = ?, uregtime = ?, ulastlogintime = ?, ulastloginip = ?, ubirth = ?, uage = ?, usex = ?, uprovince = ?, ucity = ?, uarea = ?, usignature = ?, uhobby = ?, umail = ?, upagecount = ? where uid = ?";
 		try(
 			Connection conn = DBUtil.getConnection();
 			PreparedStatement pst = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 		){
 			pst.setString(1, user.getUname());										//uname
-			pst.setString(2, user.getUpassword());									//upassword
-			pst.setInt(3, user.getUlv());											//ulv
-			pst.setTimestamp(4, new Timestamp(user.getUregtime().getTime()));		//uregtime
-			pst.setTimestamp(5, new Timestamp(user.getUlastlogintime().getTime()));	//ulastlogintime
-			pst.setString(6, user.getUlastloginip());								//ulastloginip
-			pst.setTimestamp(7, new Timestamp(user.getUbirth().getTime()));			//ubirth
-			pst.setInt(8, user.getUage());											//uage
-			pst.setBoolean(9, user.isUsex());										//usex
-			pst.setString(10, user.getUprovince());									//uprovince
-			pst.setString(11, user.getUcity());										//ucity
-			pst.setString(12, user.getUarea());										//uarea
-			pst.setString(13, user.getUsignature());								//usignature
-			pst.setString(14, user.getUhobby());									//uhobby
-			pst.setString(15, user.getUmail());										//umail
-			pst.setInt(16, user.getUpagecount());									//upagecount
-			pst.setInt(17, uid);
+			pst.setString(2, user.getUnickname());									//unickname
+			pst.setString(3, user.getUpassword());									//upassword
+			pst.setInt(4, user.getUlv());											//ulv
+			pst.setTimestamp(5, new Timestamp(user.getUregtime().getTime()));		//uregtime
+			pst.setTimestamp(6, new Timestamp(user.getUlastlogintime().getTime()));	//ulastlogintime
+			pst.setString(7, user.getUlastloginip());								//ulastloginip
+			pst.setTimestamp(8, new Timestamp(user.getUbirth().getTime()));			//ubirth
+			pst.setInt(9, user.getUage());											//uage
+			pst.setBoolean(10, user.isUsex());										//usex
+			pst.setString(11, user.getUprovince());									//uprovince
+			pst.setString(12, user.getUcity());										//ucity
+			pst.setString(13, user.getUarea());										//uarea
+			pst.setString(14, user.getUsignature());								//usignature
+			pst.setString(15, user.getUhobby());									//uhobby
+			pst.setString(16, user.getUmail());										//umail
+			pst.setInt(17, user.getUpagecount());									//upagecount
+			pst.setInt(18, uid);
 			pst.execute();
 		}
 	}
 	
 	public static User query(int uid) throws SQLException {
 		User user = null;
-		String sql = "select uname, upassword, ulv, uregtime, ulastlogintime, ulastloginip, ubirth, uage, usex, uprovince, ucity, uarea, usignature, uhobby, umail, upagecount from user where uid = ?";
+		String sql = "select uname, unickname, upassword, ulv, uregtime, ulastlogintime, ulastloginip, ubirth, uage, usex, uprovince, ucity, uarea, usignature, uhobby, umail, upagecount from user where uid = ?";
 		try(
 			Connection conn = DBUtil.getConnection();
 			Statement st = conn.createStatement();
@@ -93,22 +96,23 @@ public class UserDAO {
 		){
 			if(rs.next()) {
 				String uname = rs.getString(1);
-				String upassword = rs.getString(2);
-				int ulv = rs.getInt(3);
-				Date uregtime = new Date(rs.getTimestamp(4).getTime());
-				Date ulastlogintime = new Date(rs.getTimestamp(5).getTime());
-				String ulastloginip = rs.getString(6);
-				Date ubirth = new Date(rs.getTimestamp(7).getTime());
-				int uage = rs.getInt(8);
-				boolean usex = rs.getBoolean(9);
-				String uprovince = rs.getString(10);
-				String ucity = rs.getString(11);
-				String uarea = rs.getString(12);
-				String usignature = rs.getString(13);
-				String uhobby = rs.getString(14);
-				String umail = rs.getString(15);
-				int upagecount = rs.getInt(16);
-				user = new User(uid, uname, upassword, ulv, ULvNameDAO.getULvName(ulv), uregtime, ulastlogintime, ulastloginip, ubirth, uage, usex, uprovince, ucity, uarea, usignature, uhobby, umail, upagecount); 
+				String unickname = rs.getString(2);
+				String upassword = rs.getString(3);
+				int ulv = rs.getInt(4);
+				Date uregtime = new Date(rs.getTimestamp(5).getTime());
+				Date ulastlogintime = new Date(rs.getTimestamp(6).getTime());
+				String ulastloginip = rs.getString(7);
+				Date ubirth = new Date(rs.getTimestamp(8).getTime());
+				int uage = rs.getInt(9);
+				boolean usex = rs.getBoolean(10);
+				String uprovince = rs.getString(11);
+				String ucity = rs.getString(12);
+				String uarea = rs.getString(13);
+				String usignature = rs.getString(14);
+				String uhobby = rs.getString(15);
+				String umail = rs.getString(16);
+				int upagecount = rs.getInt(17);
+				user = new User(uid, uname, unickname, upassword, ulv, ULvNameDAO.getULvName(ulv), uregtime, ulastlogintime, ulastloginip, ubirth, uage, usex, uprovince, ucity, uarea, usignature, uhobby, umail, upagecount); 
 			}
 		}
 		return user;
@@ -117,7 +121,7 @@ public class UserDAO {
 	
 	public static ArrayList<User> list(int start, int len) throws SQLException{
 		ArrayList<User> users = new ArrayList<>();
-		String sql = "select uname, upassword, ulv, uregtime, ulastlogintime, ulastloginip, ubirth, uage, usex, uprovince, ucity, uarea, usignature, uhobby, umail, upagecount from user where uid = ?";
+		String sql = "select uname, unickname, upassword, ulv, uregtime, ulastlogintime, ulastloginip, ubirth, uage, usex, uprovince, ucity, uarea, usignature, uhobby, umail, upagecount from user where uid = ?";
 		try(
 				Connection conn = DBUtil.getConnection();
 				PreparedStatement pst = conn.prepareStatement(sql);
@@ -128,6 +132,7 @@ public class UserDAO {
 					HashMap<Integer, String> ulvnames = ULvNameDAO.list();
 					int uid;
 					String uname;
+					String unickname;
 					String upassword;
 					int ulv;
 					Date uregtime;
@@ -146,22 +151,23 @@ public class UserDAO {
 					while(rs.next()) {
 						uid = rs.getInt(1);
 						uname = rs.getString(2);
-						upassword = rs.getString(3);
-						ulv = rs.getInt(4);
-						uregtime = new Date(rs.getTimestamp(5).getTime());
-						ulastlogintime = new Date(rs.getTimestamp(6).getTime());
-						ulastloginip = rs.getString(7);
-						ubirth = new Date(rs.getTimestamp(8).getTime());
-						uage = rs.getInt(9);
-						usex = rs.getBoolean(10);
-						uprovince = rs.getString(11);
-						ucity = rs.getString(12);
-						uarea = rs.getString(13);
-						usignature = rs.getString(14);
-						uhobby = rs.getString(15);
-						umail = rs.getString(16);
-						upagecount = rs.getInt(17);
-						users.add(new User(uid, uname, upassword, ulv, ulvnames.get(ulv), uregtime, ulastlogintime, ulastloginip, ubirth, uage, usex, uprovince, ucity, uarea, usignature, uhobby, umail, upagecount)); 
+						unickname = rs.getString(3);
+						upassword = rs.getString(4);
+						ulv = rs.getInt(5);
+						uregtime = new Date(rs.getTimestamp(6).getTime());
+						ulastlogintime = new Date(rs.getTimestamp(7).getTime());
+						ulastloginip = rs.getString(8);
+						ubirth = new Date(rs.getTimestamp(9).getTime());
+						uage = rs.getInt(10);
+						usex = rs.getBoolean(11);
+						uprovince = rs.getString(12);
+						ucity = rs.getString(13);
+						uarea = rs.getString(14);
+						usignature = rs.getString(15);
+						uhobby = rs.getString(16);
+						umail = rs.getString(17);
+						upagecount = rs.getInt(18);
+						users.add(new User(uid, uname, unickname, upassword, ulv, ulvnames.get(ulv), uregtime, ulastlogintime, ulastloginip, ubirth, uage, usex, uprovince, ucity, uarea, usignature, uhobby, umail, upagecount)); 
 					}
 				}
 			}
@@ -186,9 +192,22 @@ public class UserDAO {
 		}
 	}
 	
+	public static boolean hasunickname(String unickname) throws SQLException {
+		String sql = "select * from user where unickname = ?";
+		try(
+			Connection conn = DBUtil.getConnection();
+			PreparedStatement pst = conn.prepareStatement(sql);
+		){
+			pst.setString(1, unickname);
+			try(ResultSet rs = pst.executeQuery()){
+				return rs.next();
+			}
+		}
+	}
+	
 	public static User checkpassword(String uname, String upassword) throws SQLException {
 		User user = null;
-		String sql = "select uid, ulv, uregtime, ulastlogintime, ulastloginip, ubirth, uage, usex, uprovince, ucity, uarea, usignature, uhobby, umail, upagecount from user where uname = ? and upassword = ?";
+		String sql = "select uid, unickname, ulv, uregtime, ulastlogintime, ulastloginip, ubirth, uage, usex, uprovince, ucity, uarea, usignature, uhobby, umail, upagecount from user where uname = ? and upassword = ?";
 		try(
 			Connection conn = DBUtil.getConnection();
 			PreparedStatement pst = conn.prepareStatement(sql);
@@ -198,21 +217,22 @@ public class UserDAO {
 			try(ResultSet rs = pst.executeQuery()){
 				if(rs.next()) {
 					int uid = rs.getInt(1);
-					int ulv = rs.getInt(2);
-					Date uregtime = new Date(rs.getTimestamp(3).getTime());
-					Date ulastlogintime = new Date(rs.getTimestamp(4).getTime());
-					String ulastloginip = rs.getString(5);
-					Date ubirth = new Date(rs.getTimestamp(6).getTime());
-					int uage = rs.getInt(7);
-					boolean usex = rs.getBoolean(8);
-					String uprovince = rs.getString(9);
-					String ucity = rs.getString(10);
-					String uarea = rs.getString(11);
-					String usignature = rs.getString(12);
-					String uhobby = rs.getString(13);
-					String umail = rs.getString(14);
-					int upagecount = rs.getInt(15);
-					user = new User(uid, uname, upassword, ulv, ULvNameDAO.getULvName(ulv), uregtime, ulastlogintime, ulastloginip, ubirth, uage, usex, uprovince, ucity, uarea, usignature, uhobby, umail, upagecount); 
+					String unickname = rs.getString(2);
+					int ulv = rs.getInt(3);
+					Date uregtime = new Date(rs.getTimestamp(4).getTime());
+					Date ulastlogintime = new Date(rs.getTimestamp(5).getTime());
+					String ulastloginip = rs.getString(6);
+					Date ubirth = new Date(rs.getTimestamp(7).getTime());
+					int uage = rs.getInt(8);
+					boolean usex = rs.getBoolean(9);
+					String uprovince = rs.getString(10);
+					String ucity = rs.getString(11);
+					String uarea = rs.getString(12);
+					String usignature = rs.getString(13);
+					String uhobby = rs.getString(14);
+					String umail = rs.getString(15);
+					int upagecount = rs.getInt(16);
+					user = new User(uid, uname, unickname, upassword, ulv, ULvNameDAO.getULvName(ulv), uregtime, ulastlogintime, ulastloginip, ubirth, uage, usex, uprovince, ucity, uarea, usignature, uhobby, umail, upagecount); 
 				}
 			}
 		}
