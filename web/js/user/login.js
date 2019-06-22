@@ -1,5 +1,5 @@
 const unamepattern = /^[a-zA-Z]\w{4,15}$/;
-const upasswordpattern = /^[+!@#$%^&/?><,\(\)\[\]\{\}\.\*\-\=\\\w]{8,20}$/;
+const upasswordpattern = /^[!@#$%&?><,^+\/()\[\]{}.*\-=\\\w]{8,20}$/;
 
 $(function(){
 	$(".form-signin").submit(function(){

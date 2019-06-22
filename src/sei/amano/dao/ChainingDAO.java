@@ -13,6 +13,7 @@ import sei.amano.bean.Block;
 import sei.amano.bean.Chaining;
 import sei.amano.bean.User;
 import sei.amano.util.DBUtil;
+import sei.amano.util.DateUtil;
 import sei.amano.util.KWUtil;
 
 public class ChainingDAO {
@@ -25,7 +26,7 @@ public class ChainingDAO {
 			pst.setInt(1, chaining.getUser().getUid());
 			pst.setInt(2, chaining.getBlock().getBid());
 			pst.setString(3, chaining.getCtitle());
-			pst.setTimestamp(4, new Timestamp(chaining.getCtime().getTime()));
+			pst.setTimestamp(4, DateUtil.d2ts(chaining.getCtime()));
 			pst.execute();
 			try(ResultSet rs = pst.getGeneratedKeys()){
 				if(rs.next())
@@ -54,7 +55,7 @@ public class ChainingDAO {
 			pst.setInt(1, chaining.getUser().getUid());
 			pst.setInt(2, chaining.getBlock().getBid());
 			pst.setString(3, chaining.getCtitle());
-			pst.setTimestamp(4, new Timestamp(chaining.getCtime().getTime()));
+			pst.setTimestamp(4, DateUtil.d2ts(chaining.getCtime()));
 			pst.setInt(5, cid);
 			pst.execute();
 		}
@@ -69,7 +70,7 @@ public class ChainingDAO {
 			ResultSet rs = st.executeQuery(sql);
 		){
 			if(rs.next())
-				chaining = new Chaining(cid, UserDAO.query(rs.getInt(1)), BlockDAO.query(rs.getInt(2)), rs.getString(3), new Date(rs.getTimestamp(4).getTime()));
+				chaining = new Chaining(cid, UserDAO.query(rs.getInt(1)), BlockDAO.query(rs.getInt(2)), rs.getString(3), DateUtil.ts2d(rs.getTimestamp(4)));
 		}
 		return chaining;
 	}
@@ -97,7 +98,7 @@ public class ChainingDAO {
 			pst.setInt(2, len);
 			try(ResultSet rs = pst.executeQuery()){
 				while(rs.next())
-					chainings.add(new Chaining(rs.getInt(1), UserDAO.query(rs.getInt(2)), BlockDAO.query(rs.getInt(3)), rs.getString(4), new Date(rs.getTimestamp(5).getTime())));
+					chainings.add(new Chaining(rs.getInt(1), UserDAO.query(rs.getInt(2)), BlockDAO.query(rs.getInt(3)), rs.getString(4), DateUtil.ts2d(rs.getTimestamp(5))));
 			}
 		}
 		return chainings;
@@ -132,7 +133,7 @@ public class ChainingDAO {
 			pst.setInt(3, len);
 			try(ResultSet rs = pst.executeQuery()){
 				while(rs.next())
-					chainings.add(new Chaining(rs.getInt(1), UserDAO.query(rs.getInt(2)), block, rs.getString(3), new Date(rs.getTimestamp(4).getTime())));
+					chainings.add(new Chaining(rs.getInt(1), UserDAO.query(rs.getInt(2)), block, rs.getString(3), DateUtil.ts2d(rs.getTimestamp(4))));
 			}
 		}
 		return chainings;
@@ -166,7 +167,7 @@ public class ChainingDAO {
 			pst.setInt(3, len);
 			try(ResultSet rs = pst.executeQuery()){
 				while(rs.next())
-					chainings.add(new Chaining(rs.getInt(1), user, BlockDAO.query(rs.getInt(2)), rs.getString(3), new Date(rs.getTimestamp(4).getTime())));
+					chainings.add(new Chaining(rs.getInt(1), user, BlockDAO.query(rs.getInt(2)), rs.getString(3), DateUtil.ts2d(rs.getTimestamp(4))));
 			}
 		}
 		return chainings;
@@ -201,7 +202,7 @@ public class ChainingDAO {
 			pst.setInt(3, len);
 			try(ResultSet rs = pst.executeQuery()){
 				while(rs.next())
-					chainings.add(new Chaining(rs.getInt(1), UserDAO.query(rs.getInt(2)), BlockDAO.query(rs.getInt(3)), rs.getString(4), new Date(rs.getTimestamp(5).getTime())));
+					chainings.add(new Chaining(rs.getInt(1), UserDAO.query(rs.getInt(2)), BlockDAO.query(rs.getInt(3)), rs.getString(4), DateUtil.ts2d(rs.getTimestamp(5))));
 			}
 		}
 		return chainings;

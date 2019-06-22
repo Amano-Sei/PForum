@@ -19,3 +19,11 @@ div.row div.custom-file{
 h6 a:hover, h6 a:focus{
 	text-decoration: none;
 }
+
+
+a.formodal{
+	color: inherit;
+}
+a.formodal:hover, a.formodal:focus{
+	text-decoration: none;
+}

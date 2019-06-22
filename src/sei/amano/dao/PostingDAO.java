@@ -7,11 +7,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 import sei.amano.bean.Chaining;
 import sei.amano.bean.Posting;
 import sei.amano.bean.User;
 import sei.amano.util.DBUtil;
+import sei.amano.util.DateUtil;
 import sei.amano.util.KWUtil;
 
 public class PostingDAO {
@@ -26,7 +28,7 @@ public class PostingDAO {
 			pst.setInt(3, posting.getChaining().getCid());
 			pst.setInt(4, posting.getUser().getUid());
 			pst.setString(5, posting.getUip());
-			pst.setTimestamp(6, new Timestamp(posting.getPtime().getTime()));
+			pst.setTimestamp(6, DateUtil.d2ts(posting.getPtime()));
 			pst.setInt(7, posting.getFloorinchaining());
 			pst.execute();
 			try(ResultSet rs = pst.getGeneratedKeys()){
@@ -57,7 +59,7 @@ public class PostingDAO {
 			pst.setInt(3, posting.getChaining().getCid());
 			pst.setInt(4, posting.getUser().getUid());
 			pst.setString(5, posting.getUip());
-			pst.setTimestamp(6, new Timestamp(posting.getPtime().getTime()));
+			pst.setTimestamp(6, DateUtil.d2ts(posting.getPtime()));
 			pst.setInt(7, posting.getFloorinchaining());
 			pst.setInt(8, pid);
 			pst.execute();
@@ -78,7 +80,7 @@ public class PostingDAO {
 				int cid = rs.getInt(3);
 				int uid = rs.getInt(4);
 				String uip = rs.getString(5);
-				Timestamp ptime = rs.getTimestamp(6);
+				Date ptime = DateUtil.ts2d(rs.getTimestamp(6));
 				int floorinchaining = rs.getInt(7);
 				posting = new Posting(pid, ptitle, pcontent, ChainingDAO.query(cid), UserDAO.query(uid), uip, ptime, floorinchaining);
 			}
@@ -114,7 +116,7 @@ public class PostingDAO {
 				int cid;
 				int uid;
 				String uip;
-				Timestamp ptime;
+				Date ptime;
 				int floorinchaining;
 				if(rs.next()) {
 					pid = rs.getInt(1);
@@ -123,7 +125,7 @@ public class PostingDAO {
 					cid = rs.getInt(4);
 					uid = rs.getInt(5);
 					uip = rs.getString(6);
-					ptime = rs.getTimestamp(7);
+					ptime = DateUtil.ts2d(rs.getTimestamp(7));
 					floorinchaining = rs.getInt(8);
 					postings.add(new Posting(pid, ptitle, pcontent, ChainingDAO.query(cid), UserDAO.query(uid), uip, ptime, floorinchaining));
 				}
@@ -164,7 +166,7 @@ public class PostingDAO {
 				Chaining chaining = ChainingDAO.query(cid);
 				int uid;
 				String uip;
-				Timestamp ptime;
+				Date ptime;
 				int floorinchaining;
 				if(rs.next()) {
 					pid = rs.getInt(1);
@@ -172,7 +174,7 @@ public class PostingDAO {
 					pcontent = rs.getString(3);
 					uid = rs.getInt(4);
 					uip = rs.getString(5);
-					ptime = rs.getTimestamp(6);
+					ptime = DateUtil.ts2d(rs.getTimestamp(6));
 					floorinchaining = rs.getInt(7);
 					postings.add(new Posting(pid, ptitle, pcontent, chaining, UserDAO.query(uid), uip, ptime, floorinchaining));
 				}
@@ -212,7 +214,7 @@ public class PostingDAO {
 				int cid;
 				User user = UserDAO.query(uid);
 				String uip;
-				Timestamp ptime;
+				Date ptime;
 				int floorinchaining;
 				if(rs.next()) {
 					pid = rs.getInt(1);
@@ -220,7 +222,7 @@ public class PostingDAO {
 					pcontent = rs.getString(3);
 					cid = rs.getInt(4);
 					uip = rs.getString(5);
-					ptime = rs.getTimestamp(6);
+					ptime = DateUtil.ts2d(rs.getTimestamp(6));
 					floorinchaining = rs.getInt(7);
 					postings.add(new Posting(pid, ptitle, pcontent, ChainingDAO.query(cid), user, uip, ptime, floorinchaining));
 				}
@@ -261,7 +263,7 @@ public class PostingDAO {
 				int cid;
 				int uid;
 				String uip;
-				Timestamp ptime;
+				Date ptime;
 				int floorinchaining;
 				if(rs.next()) {
 					pid = rs.getInt(1);
@@ -270,7 +272,7 @@ public class PostingDAO {
 					cid = rs.getInt(4);
 					uid = rs.getInt(5);
 					uip = rs.getString(6);
-					ptime = rs.getTimestamp(7);
+					ptime = DateUtil.ts2d(rs.getTimestamp(7));
 					floorinchaining = rs.getInt(8);
 					postings.add(new Posting(pid, ptitle, pcontent, ChainingDAO.query(cid), UserDAO.query(uid), uip, ptime, floorinchaining));
 				}

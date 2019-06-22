@@ -27,10 +27,10 @@ public class LoginFilter implements Filter {
 		String preuri = request.getRequestURI(); 
 		String uri = preuri.substring(request.getServletContext().getContextPath().length());
 		if(user == null && (uri.startsWith("/content") || uri.startsWith("/admin") || uri.startsWith("/user/manage"))) {
-			response.sendRedirect("/user/login.jsp?errlogin="+URLEncoder.encode("请先登录", StandardCharsets.UTF_8)+"&preuri="+preuri);
+			response.sendRedirect("/PForum/user/login.jsp?errlogin="+URLEncoder.encode("请先登录", StandardCharsets.UTF_8)+"&preuri="+preuri);
 			return;
 		}else if(user != null && (uri.startsWith("/user/login.jsp") || uri.startsWith("/user/register.jsp"))) {
-			response.sendRedirect("/home.jsp?errhome="+URLEncoder.encode("您已登录", StandardCharsets.UTF_8));
+			response.sendRedirect("/PForum/home.jsp?errhome="+URLEncoder.encode("您已登录", StandardCharsets.UTF_8));
 			return;
 		}
 			

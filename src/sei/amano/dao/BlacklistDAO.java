@@ -11,6 +11,7 @@ import java.util.Date;
 
 import sei.amano.bean.BlackList;
 import sei.amano.util.DBUtil;
+import sei.amano.util.DateUtil;
 
 public class BlacklistDAO {
 	public static int add(BlackList blacklist) throws SQLException {
@@ -20,7 +21,7 @@ public class BlacklistDAO {
 			PreparedStatement pst = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 		){
 			pst.setString(1, blacklist.getBlip());
-			pst.setTimestamp(2, new Timestamp(blacklist.getBldate().getTime()));
+			pst.setTimestamp(2, DateUtil.d2ts(blacklist.getBldate()));
 			pst.execute();
 			try(ResultSet rs = pst.getGeneratedKeys()){
 				if(rs.next())
@@ -51,7 +52,7 @@ public class BlacklistDAO {
 			pst.setInt(2, len);
 			try(ResultSet rs = pst.executeQuery()){
 				while(rs.next()) {
-					ips.add(new BlackList(rs.getInt(1), rs.getString(2), new Date(rs.getTimestamp(3).getTime())));
+					ips.add(new BlackList(rs.getInt(1), rs.getString(2), DateUtil.ts2d(rs.getTimestamp(3))));
 				}
 			}
 		}

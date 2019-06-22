@@ -97,3 +97,11 @@ create table blacklist(
 	bldate 	timestamp,
 	key (blip)
 )engine=innodb,charset=utf8mb4;
+
+insert into ulvname values(-1, "警告");
+insert into ulvname values(0, "是迷路的孩子呢");
+insert into ulvname values(1, "是新来的P诶");
+insert into ulvname values(2, "是来了有段时间的P的说");
+insert into ulvname values(3, "是来好久的P了");
+insert into ulvname values(4, "是P哦！");
+insert into ulvname values(5, "是AdminP");

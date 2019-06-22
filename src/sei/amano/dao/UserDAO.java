@@ -12,6 +12,7 @@ import java.util.HashMap;
 
 import sei.amano.bean.User;
 import sei.amano.util.DBUtil;
+import sei.amano.util.DateUtil;
 
 public class UserDAO {
 	public static void add(User user) throws SQLException {
@@ -24,12 +25,12 @@ public class UserDAO {
 			pst.setString(2, user.getUnickname());									//unickname
 			pst.setString(3, user.getUpassword());									//upassword
 			pst.setInt(4, user.getUlv());											//ulv
-			pst.setTimestamp(5, new Timestamp(user.getUregtime().getTime()));		//uregtime
-			pst.setTimestamp(6, new Timestamp(user.getUlastlogintime().getTime()));	//ulastlogintime
+			pst.setTimestamp(5, DateUtil.d2ts(user.getUregtime()));					//uregtime
+			pst.setTimestamp(6, DateUtil.d2ts(user.getUlastlogintime()));			//ulastlogintime
 			pst.setString(7, user.getUlastloginip());								//ulastloginip
-			pst.setTimestamp(8, new Timestamp(user.getUbirth().getTime()));			//ubirth
+			pst.setTimestamp(8, DateUtil.d2ts(user.getUbirth()));					//ubirth
 			pst.setInt(9, user.getUage());											//uage
-			pst.setBoolean(10, user.isUsex());										//usex
+			pst.setInt(10, user.getUsex());											//usex
 			pst.setString(11, user.getUprovince());									//uprovince
 			pst.setString(12, user.getUcity());										//ucity
 			pst.setString(13, user.getUarea());										//uarea
@@ -68,12 +69,12 @@ public class UserDAO {
 			pst.setString(2, user.getUnickname());									//unickname
 			pst.setString(3, user.getUpassword());									//upassword
 			pst.setInt(4, user.getUlv());											//ulv
-			pst.setTimestamp(5, new Timestamp(user.getUregtime().getTime()));		//uregtime
-			pst.setTimestamp(6, new Timestamp(user.getUlastlogintime().getTime()));	//ulastlogintime
+			pst.setTimestamp(5, DateUtil.d2ts(user.getUregtime()));					//uregtime
+			pst.setTimestamp(6, DateUtil.d2ts(user.getUlastlogintime()));			//ulastlogintime
 			pst.setString(7, user.getUlastloginip());								//ulastloginip
-			pst.setTimestamp(8, new Timestamp(user.getUbirth().getTime()));			//ubirth
+			pst.setTimestamp(8, DateUtil.d2ts(user.getUbirth()));					//ubirth
 			pst.setInt(9, user.getUage());											//uage
-			pst.setBoolean(10, user.isUsex());										//usex
+			pst.setInt(10, user.getUsex());											//usex
 			pst.setString(11, user.getUprovince());									//uprovince
 			pst.setString(12, user.getUcity());										//ucity
 			pst.setString(13, user.getUarea());										//uarea
@@ -99,12 +100,12 @@ public class UserDAO {
 				String unickname = rs.getString(2);
 				String upassword = rs.getString(3);
 				int ulv = rs.getInt(4);
-				Date uregtime = new Date(rs.getTimestamp(5).getTime());
-				Date ulastlogintime = new Date(rs.getTimestamp(6).getTime());
+				Date uregtime = DateUtil.ts2d(rs.getTimestamp(5));
+				Date ulastlogintime = DateUtil.ts2d(rs.getTimestamp(6));
 				String ulastloginip = rs.getString(7);
-				Date ubirth = new Date(rs.getTimestamp(8).getTime());
+				Date ubirth = DateUtil.ts2d(rs.getTimestamp(8));
 				int uage = rs.getInt(9);
-				boolean usex = rs.getBoolean(10);
+				int usex = rs.getInt(10);
 				String uprovince = rs.getString(11);
 				String ucity = rs.getString(12);
 				String uarea = rs.getString(13);
@@ -140,7 +141,7 @@ public class UserDAO {
 					String ulastloginip;
 					Date ubirth;
 					int uage;
-					boolean usex;
+					int usex;
 					String uprovince;
 					String ucity;
 					String uarea;
@@ -154,12 +155,12 @@ public class UserDAO {
 						unickname = rs.getString(3);
 						upassword = rs.getString(4);
 						ulv = rs.getInt(5);
-						uregtime = new Date(rs.getTimestamp(6).getTime());
-						ulastlogintime = new Date(rs.getTimestamp(7).getTime());
+						uregtime = DateUtil.ts2d(rs.getTimestamp(6));
+						ulastlogintime = DateUtil.ts2d(rs.getTimestamp(7));
 						ulastloginip = rs.getString(8);
-						ubirth = new Date(rs.getTimestamp(9).getTime());
+						ubirth = DateUtil.ts2d(rs.getTimestamp(9));
 						uage = rs.getInt(10);
-						usex = rs.getBoolean(11);
+						usex = rs.getInt(11);
 						uprovince = rs.getString(12);
 						ucity = rs.getString(13);
 						uarea = rs.getString(14);
@@ -213,18 +214,18 @@ public class UserDAO {
 			PreparedStatement pst = conn.prepareStatement(sql);
 		){
 			pst.setString(1, uname);
-			pst.setString(2, sql);
+			pst.setString(2, upassword);
 			try(ResultSet rs = pst.executeQuery()){
 				if(rs.next()) {
 					int uid = rs.getInt(1);
 					String unickname = rs.getString(2);
 					int ulv = rs.getInt(3);
-					Date uregtime = new Date(rs.getTimestamp(4).getTime());
-					Date ulastlogintime = new Date(rs.getTimestamp(5).getTime());
+					Date uregtime = DateUtil.ts2d(rs.getTimestamp(4));
+					Date ulastlogintime = DateUtil.ts2d(rs.getTimestamp(5));
 					String ulastloginip = rs.getString(6);
-					Date ubirth = new Date(rs.getTimestamp(7).getTime());
+					Date ubirth = DateUtil.ts2d(rs.getTimestamp(7));
 					int uage = rs.getInt(8);
-					boolean usex = rs.getBoolean(9);
+					int usex = rs.getInt(9);
 					String uprovince = rs.getString(10);
 					String ucity = rs.getString(11);
 					String uarea = rs.getString(12);

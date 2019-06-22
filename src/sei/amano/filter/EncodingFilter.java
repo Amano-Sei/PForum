@@ -9,13 +9,11 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 public class EncodingFilter implements Filter {
-
 	@Override
 	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)
 			throws IOException, ServletException {
 		arg0.setCharacterEncoding("UTF-8");
-		System.out.println("now utf8");
+		//System.out.println("now utf8");
 		arg2.doFilter(arg0, arg1);
 	}
-
 }

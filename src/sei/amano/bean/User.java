@@ -14,7 +14,7 @@ public class User {
 	private String ulastloginip;
 	private Date ubirth;
 	private int uage;
-	private boolean usex;
+	private int usex;		//男1女0保密-1
 	private String uprovince;
 	private String ucity;
 	private String uarea;
@@ -27,7 +27,7 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 	public User(int uid, String uname, String unickname, String upassword, int ulv, String ulvname, Date uregtime, Date ulastlogintime,
-			String ulastloginip, Date ubirth, int uage, boolean usex, String uprovince, String ucity, String uarea,
+			String ulastloginip, Date ubirth, int uage, int usex, String uprovince, String ucity, String uarea,
 			String usignature, String uhobby, String umail, int upagecount) {
 		super();
 		this.uid = uid;
@@ -116,10 +116,10 @@ public class User {
 	public void setUage(int uage) {
 		this.uage = uage;
 	}
-	public boolean isUsex() {
+	public int getUsex() {
 		return usex;
 	}
-	public void setUsex(boolean usex) {
+	public void setUsex(int usex) {
 		this.usex = usex;
 	}
 	public String getUprovince() {

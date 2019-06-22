@@ -35,6 +35,22 @@
         <url-pattern>/loginServlet</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>ChecknameServlet</servlet-name>
+        <servlet-class>sei.amano.user.servlet.ChecknameServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChecknameServlet</servlet-name>
+        <url-pattern>/checknameServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>sei.amano.user.servlet.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/registerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>sei.amano.user.servlet.LogoutServlet</servlet-class>
     </servlet>
