@@ -78,7 +78,7 @@ function checkself(cinput){
 	switch(cname){
 		case "uname":
 			if(!cinput.checkValidity()){
-				$(cinput).next(".invalid-feedback").text("用户名只能为5~16位的字母或下划线且只能以字母开头!");
+				$(cinput).next().text("用户名只能为5~16位的字母或下划线且只能以字母开头!");
 				if(vreg.test($(cinput).attr("class")))
 					invcnt++;
 				beinvalid(cinput);
@@ -89,7 +89,7 @@ function checkself(cinput){
 					{"uname": cinput.value},
 					function(result){
 						if(result == 'true'){
-							$(cinput).next(".invalid-feedback").text("用户名重复!");
+							$(cinput).next().text("用户名重复!");
 							if(vreg.test($(cinput).attr("class")))
 								invcnt++;
 							beinvalid(cinput);
@@ -133,7 +133,7 @@ function checkself(cinput){
 			break;
 		case "unickname":
 			if(!cinput.checkValidity()){
-				$(cinput).next(".invalid-feedback").text("昵称为2~16位的汉字或者字符或者下划线或者空格切不能以空格为开头或结尾!");
+				$(cinput).next().text("昵称为2~16位的汉字或者字符或者下划线或者空格切不能以空格为开头或结尾!");
 				if(vreg.test($(cinput).attr("class")))
 					invcnt++;
 				beinvalid(cinput);
@@ -144,7 +144,7 @@ function checkself(cinput){
 					{"unickname": cinput.value},
 					function(result){
 						if(result == 'true'){
-							$(cinput).next(".invalid-feedback").text("昵称重复!");
+							$(cinput).next().text("昵称重复!");
 							if(vreg.test($(cinput).attr("class")))
 								invcnt++;
 							beinvalid(cinput);
@@ -338,7 +338,7 @@ $(function(){
 			if(!vreg.test($(this).attr("class"))){
 				invcnt++;
 				if(hasreg.test($(this).attr("class")))
-					$(this).next(".invalid-feedback").text($(this).attr("id")=='uname'?"用户名重复":"昵称重复");
+					$(this).next().text($(this).attr("id")=='uname'?"用户名重复":"昵称重复");
 			}
 		}else{
 			if(invreg.test($(this).attr("class")))

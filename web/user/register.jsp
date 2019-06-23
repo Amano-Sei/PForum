@@ -22,32 +22,32 @@
 				<div class="row">
 					<label for="uname">用户名：</label>
 					<input type="text" class="form-control ${param.erruname }" id="uname" name="uname" placeholder="请输入5~16位的用户名" value="${param.uname }" required pattern="^[a-zA-Z]\w{4,15}$">
-					<div class="valid-feedback">nice</div>
 					<div class="invalid-feedback">用户名只能为5~16位的字母或下划线且只能以字母开头!</div>
+					<div class="valid-feedback">nice</div>
 				</div>
 				<div class="row">
 					<label for="upassword">密码：</label>
 					<input type="password" class="form-control ${param.errupassword }" id="upassword" name="upassword" placeholder="请输入8~20位的密码" value="" required pattern="^[!@#$%&?><,^+\/()\[\]{}.*\-=\\\w]{8,20}$">
-					<div class="valid-feedback">nice</div>
 					<div class="invalid-feedback">密码只能为8~20位的+!@#$%^&?><,()[]{}.*-=_/\或字母!</div>
+					<div class="valid-feedback">nice</div>
 				</div>
 				<div class="row">
 					<label for="reupassword">重复密码：</label>
 					<input type="password" class="form-control ${param.errreupassword }" id="reupassword" name="reupassword" placeholder="请再次输入密码" value="" required>
-					<div class="valid-feedback">nice</div>
 					<div class="invalid-feedback">两次输入的密码不同!</div>
+					<div class="valid-feedback">nice</div>
 				</div>
 				<div class="row">
 					<label for="unickname">昵称：</label>
 					<input type="text" class="form-control ${param.errunickname }" id="unickname" name="unickname" placeholder="请输入昵称" value="${param.unickname}" pattern="^([^\x00-\xff]|\w)([^\x00-\xff]|\w| ){0,14}([^\x00-\xff]|\w)$" required>
-					<div class="valid-feedback">nice</div>
 					<div class="invalid-feedback">昵称为2~16位的汉字或者字符或者下划线或者空格切不能以空格为开头或结尾!</div>
+					<div class="valid-feedback">nice</div>
 				</div>
 				<div class="row">
 					<label for="umail">邮箱：</label>
 					<input type="email" class="form-control ${param.errumail }" id="umail" name="umail" placeholder="请输入邮箱" value="${param.umail}" pattern="^\w+@(\w+.)+\w+$" required>
-					<div class="valid-feedback">nice</div>
 					<div class="invalid-feedback">请输入正确的邮箱!</div>
+					<div class="valid-feedback">nice</div>
 				</div>
 				<div class="row">
 					<label for="secret">性别：</label>
@@ -56,8 +56,8 @@
 					<div class="custom-control custom-radio ml-3 col-md-3">
 						<input type="radio" class="custom-control-input ${param.errusex }" ${param.male } id="male" name="usex" value="male" required>
 						<label class="custom-control-label" for="male">男</label>
-						<div class="valid-feedback">nice</div>
 						<div class="invalid-feedback">保密也是可以鸭</div>
+						<div class="valid-feedback">nice</div>
 					</div>
 					<div class="custom-control custom-radio col-md-3">
 						<input type="radio" class="custom-control-input ${param.errusex }" ${param.female } id="female" name="usex" value="female" required>
@@ -74,8 +74,8 @@
 					<div class="custom-control custom-checkbox ml-5">
 						<input type="checkbox" class="custom-control-input ${param.erruagree }" id="uagree" name="uagree" value="on" ${param.uagree } required>
 						<label class="custom-control-label" for="uagree">我不是臭<a class="formodal" data-toggle="modal" href="#whatsdd">dd</a>。</label>
-						<div class="valid-feedback">nice</div>
 						<div class="invalid-feedback">dd滚开啊</div>
+						<div class="valid-feedback">nice</div>
 					</div>
 				</div>
 				<div class="modal" id="whatsdd">
@@ -107,27 +107,27 @@
 					<div class="custom-file">
 						<input type="file" class="custom-file-input ${param.erruprofile }" id="uprofile" name="uprofile" accept="image/jpeg">
 						<label class="custom-file-label" for="uprofile">上传头像...</label>
-						<div class="valid-feedback mt-3">nice</div>
 						<div class="invalid-feedback mt-3">头像大小不能超过1m，且必须为jpg文件</div>
+						<div class="valid-feedback mt-3">nice</div>
 					</div>
 				</div>
 				<div class="row">
 					<label for="ubirth">生日：</label>
 					<input type="date" class="form-control ${param.errubirth }" value="${param.ubirth }" id="ubirth" name="ubirth" min="1900-01-01" max="2019-6-21">
-					<div class="valid-feedback">nice，需要注意据已知最少chrome不会产生无效的日期，所以如果是无效的生日的话请当做你没有填</div>
 					<div class="invalid-feedback">格式需要形如"yyyy-MM-dd"，否则按照常理来说是不可能存在的的生日！（当然如果是正确的生日请联系管理员，同时给老先生您道个歉，对不起）</div>
+					<div class="valid-feedback">nice，需要注意据已知最少chrome不会产生无效的日期，所以如果是无效的生日的话请当做你没有填</div>
 				</div>
 				<div class="row">
 					<label for="uhobby">爱好：</label>
 					<input type="text" class="form-control ${param.erruhobby }" id="uhobby" name="uhobby" placeholder="请输入爱好" value="${param.uhobby}">
-					<div class="valid-feedback">nice</div>
 					<div class="invalid-feedback">爱好需要为2~60位双字节字符（你可以当做是中文）或英文字符或下划线或空格且不能以空格开头或结尾！</div>
+					<div class="valid-feedback">nice</div>
 				</div>
 				<div class="row">
 					<label for="usignature">个性签名：</label>
 					<textarea class="form-control ${param.errusignature }" id="usignature" name="usignature" placeholder="这个人很懒，什么都没有留下">${param.usignature}</textarea>
-					<div class="valid-feedback">nice</div>
 					<div class="invalid-feedback">个性签名的限制为2~256个字符</div>
+					<div class="valid-feedback">nice</div>
 				</div>
 			</div>
 			</div>

@@ -76,19 +76,26 @@ jojo我不复习了！<br>
 |  65 | 前端     | jsp     | /web/user/manage          | modify.jsp                     |    0 |
 |  66 | 前端     | jsp     | /web/user/manage          | postinglist.jsp                |    0 |
 |  67 | 前端     | jsp     | /web/user/manage          | status.jsp                     |    0 |
-|  68 | 后端     | util    | sei.amano.util            | IPUtil.java                    |    0 |
+|  68 | 后端     | util    | sei.amano.util            | IPUtil.java                    |    1 |
 |  69 | 前端     | html    | /web                      | error.html                     |    1 |
-|  70 | 前端     | css     | /css                      | syle.css                       |    0 |
+|  70 | 前端     | css     | /css                      | style.css                      |    0 |
 |  71 | 后端     | bean    | sei.amano.bean            | BlackList.java                 |    1 |
 |  72 | 前端     | include | /web/include              | splib.jsp                      |    1 |
 |  73 | 后端     | servlet | sei.amano.user.servlet    | ChecknameServlet.java          |    1 |
 |  74 | 后端     | util    | sei.amano.util            | ParamUtil.java                 |    1 |
 +-----+----------+---------+---------------------------+--------------------------------+------+
 </pre>
-last update 2019-06-22<br>
-最后完成的文件：RegisterServlet.java<br>
+
+last update 2019-06-22 夜<br>
+最后完成的文件: RegisterServlet.java<br>
 感觉自己不能再超荷工作了...主要是容易出bug，差不多决定了（要拿半成品交了！<br>
 一个难点一做就是一天，接下来后台两天用户自我管理一天主页一天半帖子页一天半<br>
 做不完的...这就是现实，再熬夜吐血不复习也做不完的，最主要的是这样bug越来越多<br>
 还是假期慢慢做吧<br>
-惊了居然JavaScript代码突然就占了一半...果然我的js学的是狗屎QAQ
+惊了居然JavaScript代码突然就占了一半...果然我的js学的是狗屎QAQ<br>
+半成品是指自己之前给自己做的练习，不过当大作业交还是绰绰有余的<br>
+<br>
+last update 2019-06-23 晨<br>
+最后修改的文件: register.js<br>
+改变了主意不再每次更新后删除last update部分，而是保留←准备把readme当日记写的某人<br>
+毕竟自己js都没有学好，jquery更是一边百度一边用的，然后修正了一点小bug，至此register部分除了省市县应该彻底结束了（测试点都测试过应该，嗯...应该）<br>
